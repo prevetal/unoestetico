@@ -236,7 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	// Product anchors
 	const observerOptions = {
 		root: null,
-		threshold: 0.1,
+		rootMargin: '-100px 0px 0px 0px',
+		threshold: 0
 	}
 
 	const observer = new IntersectionObserver((entries) => {
