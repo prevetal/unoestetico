@@ -362,6 +362,26 @@ button
 }
 
 
+@media print,
+(max-width: 1599px)
+{
+    .buttonUp
+    {
+        margin-right: -680px;
+    }
+}
+
+
+@media print,
+(max-width: 1439px)
+{
+    .buttonUp
+    {
+        display: none;
+    }
+}
+
+
 
 /*----------------
     Pagination
@@ -422,6 +442,64 @@ button
 .pagination .next .icon
 {
     transform: rotate(180deg);
+}
+
+
+
+/*-------------
+    Animate
+-------------*/
+.animate
+{
+    transition: .3s linear;
+    transition-property: opacity, transform;
+
+    opacity: 0;
+}
+
+
+.animate.fadeUp
+{
+    transform: translateY(50%);
+}
+
+.animate.fadeLeft
+{
+    transform: translateX(-50%);
+}
+
+.animate.fadeRight
+{
+    transform: translateX(50%);
+}
+
+
+.animate.delay
+{
+    transition-delay: .2s;
+}
+
+.animate.delay2
+{
+    transition-delay: .4s;
+}
+
+.animate.delay3
+{
+    transition-delay: .6s;
+}
+
+.animate.delay4
+{
+    transition-delay: .8s;
+}
+
+
+.animate.animated
+{
+    transform: none;
+
+    opacity: 1;
 }
 
 
@@ -666,7 +744,7 @@ header .sub_menu
 
     opacity: 0;
     border-top: 3px solid rgba(204, 150, 90, .9);
-    background: rgba(23, 23, 23, .9);
+    background: rgba(0, 0, 0, .9);
 }
 
 
@@ -865,13 +943,14 @@ header .btns .btn
 }
 
 
-header .btns .btn.border
+header .btns .btn.border,
+header .btns .btn:hover
 {
     background: none;
 }
 
 
-header .btns .btn:hover
+header .btns .btn.border:hover
 {
     background: var(--primary_color);
 }
@@ -1830,10 +1909,19 @@ header .btns .btn:hover
     font-weight: 500;
 
     margin-top: 47px;
-    padding: 24px 55px;
+    padding: 23px 54px;
 
+    transition: background .2s linear;
+
+    border: 1px solid var(--primary_color);
     border-radius: 90px;
     background: var(--primary_color);
+}
+
+
+.main_slider .btn:hover
+{
+    background: none;
 }
 
 
@@ -1936,12 +2024,8 @@ header .btns .btn:hover
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-}
 
-
-.for_what .item.color
-{
-    color: var(--primary_color);
+    transition: color .2s linear;
 }
 
 
@@ -1972,6 +2056,12 @@ header .btns .btn:hover
     align-self: center;
 
     width: calc(100% - 78px);
+}
+
+
+.for_what .item:hover
+{
+    color: var(--primary_color);
 }
 
 
@@ -2195,6 +2285,9 @@ header .btns .btn:hover
 
 .advantages .row > *
 {
+    display: flex;
+    flex-direction: column;
+
     width: calc(33.333% - 30px);
     margin-bottom: 89px;
     margin-left: 30px;
@@ -2204,6 +2297,8 @@ header .btns .btn:hover
 .advantages .item
 {
     position: relative;
+
+    flex: 1 0 auto;
 
     padding: 74px 24px 24px;
 
@@ -2639,6 +2734,7 @@ header .btns .btn:hover
 
     width: 80px;
 
+    transition: color .2s linear;
     white-space: nowrap;
     text-transform: uppercase;
 
@@ -2646,12 +2742,6 @@ header .btns .btn:hover
 
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: var(--primary_color);
-}
-
-
-.steps .step .number.fill
-{
-    color: var(--primary_color);
 }
 
 
@@ -2668,12 +2758,8 @@ header .btns .btn:hover
     font-size: 22px;
     font-weight: 900;
     line-height: calc(100% + 4px);
-}
 
-
-.steps .step .name.color
-{
-    color: var(--primary_color);
+    transition: color .2s linear;
 }
 
 
@@ -2685,6 +2771,18 @@ header .btns .btn:hover
     margin-top: 10px;
 
     color: #9b9b9b;
+}
+
+
+.steps .step:hover .name
+{
+    color: var(--primary_color);
+}
+
+
+.steps .step:hover .number
+{
+    color: var(--primary_color);
 }
 
 
@@ -3516,7 +3614,36 @@ header .btns .btn:hover
 ----------------*/
 .categories
 {
+    position: sticky;
+    z-index: 90;
+    top: 0;
+
     margin-bottom: 55px;
+}
+
+
+.categories .mob_btn
+{
+    font-size: 16px;
+    font-weight: 500;
+
+    display: none;
+
+    width: 100%;
+    padding: 11px 19px;
+
+    transition: background .2s linear;
+
+    color: #fff;
+    border: 1px solid var(--primary_color);
+    border-radius: 90px;
+    background: var(--primary_color);
+}
+
+
+.categories .mob_btn.active
+{
+    background: none;
 }
 
 
@@ -3703,7 +3830,8 @@ header .btns .btn:hover
 }
 
 
-.products .product .btns .btn.border
+.products .product .btns .btn.border,
+.products .product .btns .btn:hover
 {
     background: none;
 }

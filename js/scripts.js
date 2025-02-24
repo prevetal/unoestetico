@@ -234,33 +234,55 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 	// Product anchors
-	const observerOptions = {
-		root: null,
-		rootMargin: '-100px 0px 0px 0px',
-		threshold: 0
-	}
+	const anchors = document.querySelectorAll('.anchor_block'),
+		buttons = document.querySelectorAll('.anchors .btn'),
+		roller = document.querySelector('.anchors .roller')
 
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			const el = entry.target,
-				btn = document.querySelector(`.anchors .btn[data-anchor="${el.id}"]`),
-				roller = document.querySelector('.anchors .roller')
+	function updateActiveAnchor() {
+		let closestAnchor = null,
+			closestDistance = Infinity
 
-			if (entry.isIntersecting) {
-				document.querySelectorAll('.anchors .btn').forEach(el => el.classList.remove('active'))
+		anchors.forEach(anchor => {
+			const rect = anchor.getBoundingClientRect(),
+				distance = Math.abs(rect.top)
 
-				if (btn) btn.classList.add('active')
-
-				roller.style.left = btn.offsetLeft + 'px'
-                roller.style.width = btn.offsetWidth + 'px'
-			} else {
-				if (btn) btn.classList.remove('active')
+			// Если блок виден и ближе к верху экрана
+			if (rect.top <= window.innerHeight && rect.bottom >= 0 && distance < closestDistance) {
+				closestDistance = distance
+				closestAnchor = anchor
 			}
 		})
-	  }, observerOptions)
 
-	document.querySelectorAll('.anchor_block').forEach(el => observer.observe(el))
+		// Если найден ближайший блок
+		if (closestAnchor) {
+			const activeButton = document.querySelector(`.anchors .btn[data-anchor="${closestAnchor.id}"]`)
 
+			// Убираем активность у всех кнопок
+			buttons.forEach(button => button.classList.remove('active'))
+
+			// Активируем кнопку для ближайшего блока
+			if (activeButton) {
+				activeButton.classList.add('active')
+				roller.style.left = activeButton.offsetLeft + 'px'
+				roller.style.width = activeButton.offsetWidth + 'px'
+			}
+		}
+	}
+
+	// Отслеживаем прокрутку страницы
+	window.addEventListener('scroll', updateActiveAnchor)
+
+	// Вызываем функцию при загрузке страницы, чтобы установить начальное состояние
+	window.addEventListener('load', updateActiveAnchor)
+
+
+	// Categories
+	$('.categories .mob_btn').click(function(e) {
+		e.preventDefault()
+
+		$(this).toggleClass('active')
+		$('.categories .data').toggleClass('show')
+	})
 
 
 	if (is_touch_device()) {
@@ -291,6 +313,26 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 		})
 	}
+
+
+	// Animation
+	const animationBoxes = document.querySelectorAll('.animate')
+
+	function scrollTracking(entries) {
+		for (const entry of entries) {
+			if (entry.target.classList.contains('animate')) {
+				if (entry.intersectionRatio >= 0.2 && !entry.target.classList.contains('animated')) {
+					entry.target.classList.add('animated')
+				}
+			}
+		}
+	}
+
+	const animationObserver = new IntersectionObserver(scrollTracking, {
+		threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+	})
+
+	animationBoxes.forEach(element => animationObserver.observe(element))
 })
 
 

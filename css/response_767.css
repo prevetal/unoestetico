@@ -554,6 +554,26 @@
     /*----------------
         Categories
     ----------------*/
+    .categories .mob_btn
+    {
+        display: block;
+    }
+
+
+    .categories .data
+    {
+        display: none;
+
+        margin-top: 20px;
+    }
+
+
+    .categories .data.show
+    {
+        display: flex;
+    }
+
+
     .categories .category
     {
         width: 33.333%;

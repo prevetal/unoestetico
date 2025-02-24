@@ -23,6 +23,19 @@
 
 
 
+    /*-------------
+        Animate
+    -------------*/
+    .animate.delay,
+    .animate.delay2,
+    .animate.delay3,
+    .animate.delay4
+    {
+        transition-delay: 0s;
+    }
+
+
+
     /*------------
         Header
     ------------*/
@@ -552,7 +565,67 @@
     ------------------*/
     .product_info .anchors
     {
-        display: none;
+        width: calc(100% + 48px);
+        margin-right: -24px;
+        margin-left: -24px;
+    }
+
+
+    .product_info .anchors .data
+    {
+        display: block;
+        overflow: auto;
+
+        padding: 0;
+
+        white-space: nowrap;
+
+        border-radius: 0;
+
+        scroll-padding: 0 24px;
+        scroll-snap-type: x mandatory;
+        scrollbar-color: transparent transparent !important;
+        scrollbar-width: thin !important;
+    }
+
+
+    .product_info .anchors .data::-webkit-scrollbar
+    {
+        display: none !important;
+
+        width: 0 !important;
+        height: 0 !important;
+
+        background-color: transparent !important;
+    }
+
+
+    .product_info .anchors .data::-webkit-scrollbar-thumb
+    {
+        background-color: transparent !important;
+    }
+
+
+    .product_info .anchors .btn
+    {
+        font-size: 16px;
+
+        display: inline-block;
+
+        width: auto;
+        max-width: none;
+        margin: 0;
+        padding: 16px 24px;
+
+        vertical-align: top;
+
+        scroll-snap-align: start;
+    }
+
+
+    .product_info .anchors .btn + .btn
+    {
+        margin-left: 8px;
     }
 
 

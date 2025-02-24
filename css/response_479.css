@@ -470,6 +470,14 @@
     /*------------------
         Product info
     ------------------*/
+    .product_info .anchors
+    {
+        width: calc(100% + 40px);
+        margin-right: -20px;
+        margin-left: -20px;
+    }
+
+
     .product_info .photo_gallery
     {
         margin-bottom: 80px;
