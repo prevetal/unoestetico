@@ -125,6 +125,7 @@ input[type=number]
     --primary_color: #cc965a;
     --font_size: 18px;
     --font_size_title: 60px;
+    --font_size_title_medium: 50px;
     --font_size_title_small: 42px;
     --font_family: 'Golos Text', 'Arial', sans-serif;
     --font_family2: 'AA Bebas Neue', 'Arial', sans-serif;
@@ -1359,6 +1360,12 @@ header .btns .btn.border:hover
 }
 
 
+.page_title.medium
+{
+    font-size: var(--font_size_title_medium);
+}
+
+
 
 .page_head .text_block
 {
@@ -1672,10 +1679,19 @@ header .btns .btn.border:hover
 
     display: block;
 
-    padding: 24px 55px;
+    padding: 23px 54px;
 
+    transition: background .2s linear;
+
+    border: 1px solid var(--primary_color);
     border-radius: 90px;
     background: var(--primary_color);
+}
+
+
+.form .submit_btn:hover
+{
+    background: none;
 }
 
 
@@ -1890,7 +1906,7 @@ header .btns .btn.border:hover
 
 .main_slider .title
 {
-    font-size: 80px;
+    font-size: 70px;
     font-weight: 900;
     line-height: calc(100% + 4px);
 }
@@ -3992,7 +4008,8 @@ header .btns .btn.border:hover
 }
 
 
-.product_info .description .btns .btn.border
+.product_info .description .btns .btn.border,
+.product_info .description .btns .btn:hover
 {
     background: none;
 }

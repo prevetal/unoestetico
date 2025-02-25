@@ -8,6 +8,7 @@
     {
         --font_size: 16px;
         --font_size_title: 44px;
+        --font_size_title_medium: 44px;
         --font_size_title_small: 32px;
     }
 
@@ -626,6 +627,12 @@
     .product_info .anchors .btn + .btn
     {
         margin-left: 8px;
+    }
+
+
+    .product_info .anchors .roller
+    {
+        display: none;
     }
 
 
