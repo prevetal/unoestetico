@@ -333,6 +333,20 @@ document.addEventListener('DOMContentLoaded', function() {
 	})
 
 	animationBoxes.forEach(element => animationObserver.observe(element))
+
+
+	// Custom select - Nice select
+	const selects = document.querySelectorAll('select:not(.skip)')
+
+	if (selects) {
+		selects.forEach(el => {
+			NiceSelect.bind(el, {
+				placeholder: el.getAttribute('data-placeholder')
+			})
+
+			el.addEventListener('change', () => el.classList.add('selected'))
+		})
+	}
 })
 
 

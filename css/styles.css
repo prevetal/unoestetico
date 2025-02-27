@@ -1570,6 +1570,146 @@ header .btns .btn.border:hover
 }
 
 
+.form select
+{
+    display: none;
+}
+
+
+.form .nice-select
+{
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: normal;
+
+    position: relative;
+
+    display: block;
+    float: none;
+
+    height: auto;
+    padding: 0;
+
+    cursor: pointer;
+
+    border: none;
+    border-radius: 0;
+    background: none;
+}
+
+.form .nice-select:after
+{
+    display: none;
+}
+
+
+.form .nice-select .current
+{
+    font-size: 15px;
+    line-height: 54px;
+
+    display: block;
+    overflow: hidden;
+
+    height: 56px;
+    padding: 0 51px 0 21px;
+
+    cursor: pointer;
+    transition: border-color .2s linear;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: var(--form_placeholder_color);
+    border: 1px solid var(--form_border_color);
+    border-radius: var(--form_border_radius);
+    background: var(--form_bg_color);
+}
+
+.form select.selected + .nice-select .current
+{
+    color: var(--text_color);
+}
+
+
+.form .nice-select-dropdown
+{
+    position: absolute;
+    z-index: 9;
+    top: 100%;
+    left: 0;
+
+    visibility: hidden;
+    overflow: hidden;
+
+    width: 100%;
+    margin-top: 2px;
+    padding: 7px 0;
+
+    transition: .2s linear;
+    transform: none;
+
+    opacity: 0;
+    border: 1px solid var(--form_border_color);
+    border-radius: 20px;
+    background: #212121;
+}
+
+
+.form .nice-select .list .option
+{
+    font-size: 15px;
+
+    display: block;
+
+    padding: 4px 21px;
+
+    list-style-type: none;
+
+    cursor: pointer;
+}
+
+
+.form .nice-select .list .option:empty
+{
+    display: none;
+}
+
+
+.form .nice-select + .arr
+{
+    position: absolute;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    margin: auto 0;
+
+    transition: transform .2s linear;
+    transform: rotate(180deg);
+    pointer-events: none;
+}
+
+
+.form .nice-select.open .nice-select-dropdown
+{
+    visibility: visible;
+
+    transform: none;
+
+    opacity: 1;
+}
+
+
+.form .nice-select.open + .arr
+{
+    transform: rotate(0deg);
+}
+
+
 .form .error
 {
     border-color: var(--form_error_color);
@@ -1861,7 +2001,8 @@ header .btns .btn.border:hover
 }
 
 
-.main_slider .img
+.main_slider .img,
+.main_slider video
 {
     position: absolute;
     z-index: 1;
@@ -3283,6 +3424,8 @@ header .btns .btn.border:hover
 
     background: #171717;
 }
+
+
 
 
 .projects .project .thumb
@@ -4853,9 +4996,9 @@ footer .copyright
 {
     font-size: 32px;
     font-weight: 900;
-    line-height: 84px;
+    line-height: calc(100% + 5px);
 
-    margin-bottom: 10px;
+    margin-bottom: 33px;
 
     text-align: center;
 }
@@ -4870,4 +5013,13 @@ footer .copyright
 .modal .form .agree
 {
     margin-top: 0;
+}
+
+@media print,
+(min-width: 1023px)
+{
+    .projects .project:nth-child(2n) .data
+    {
+        order: -1;
+    }
 }
